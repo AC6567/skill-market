@@ -1,11 +1,12 @@
-# MOB Team - Make or Break
+# Stanley & Perrin's Project
 
-The purpose of this project is to build something cool... together as a team.
+Skill Market is an application that will allow people exchange skills.
 
-Angular and Foundation front-end, Express and MongoDB back-end. But the tech doesn't matter. This is about changing the game.
+Want to learn how to surf?
+Want to learn how to program?
 
-The MOB team will provide a service to users to allow them to provide services as long as the user donates to a named charity.
-
+Trade your skills with other so that everyone may benefit.
+CHEERS
 ___
 
 ## FRONT END CONTRIBUTORS
