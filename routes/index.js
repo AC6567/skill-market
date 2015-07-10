@@ -6,94 +6,94 @@ var slug = require("slug");
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/mob');
 
-var Service = mongoose.model("Service", {
-  serviceType: { type: String, required: true },
-  cause: { type: String, required: true },
-  title: { type: String, required: true },
+var Skill = mongoose.model("Skill", {
   name: { type: String, required: true },
-  amount: { type: Number, required: true },
+  skillTitle: { type: String, required: true },
+  skillCategory: { type: String, required: true },
+  tradeCategories: { type: String, required: true },
   description: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
 });
 
-Service.on('index', function(err) {
+Skill.on('index', function(err) {
   if (err) {
     console.error(err);
   }
 });
 
-var data = [{ serviceType: 'web development', cause: 'breast cancer', amount: '200', description: 'this is where the description will go!' }];
+// var data = [{ serviceType: 'web development', cause: 'breast cancer', amount: '200', description: 'this is where the description will go!' }];
 
 router.get('/', function(req, res, next) {
   fs.readFile('./routes/request.html', 'utf8', function(err, data){
     if(err){
       console.log(err);
-      res.status(500).json({ error: 'shit fucked up reading the request file' });
+      res.status(500).json({ error: 'Something went wrong! Fix it idiot!' });
     }
     res.send(data);
   });
 });
 
-var servicesUrl = '/services';
+var skillsUrl = '/skills';
 
-router.post(servicesUrl, function(req, res, next){
-  var newService = new Service(req.body);
-  newService.save(function(err, savedService) {
+router.post(skillsUrl, function(req, res, next){
+  var newSkill = new Skill(req.body);
+  newSkill.save(function(err, savedSkill) {
     if (err) {
       console.log(err);
       res.status(400).json({ error: "Validation Failed" });
     }
-    console.log("savedService:", savedService);
-    res.json(savedService);
+    console.log("savedSkill:", savedSkill);
+    res.json(savedSkill);
   });
 });
 
-router.get(servicesUrl, function(req, res, next) {
-  Service.find({}).sort({ createdAt: 'desc' }).limit(20).exec(function(err, services) {
+router.get(skillsUrl, function(req, res, next) {
+  Skill.find({}).sort({ createdAt: 'desc' })
+  .limit(20).exec(function(err, skills) {
     if (err) {
       console.log(err);
-      res.status(500).json({ error: "Could not retrieve services" });
+      res.status(500).json({ error: "Could not retrieve skills" });
     }
-    res.json(services);
+    res.json(skills);
   });
 });
 
-router.get(servicesUrl + '/:id', function(req, res, next) {
-  Service.findOne({ _id: req.params.id }).exec(function(err, service) {
+router.get(skillsUrl + '/:id', function(req, res, next) {
+  Skill.findOne({ _id: req.params.id }).exec(function(err, Skill) {
     if (err) {
       console.log(err);
-      res.status(400).json({ error: "Could not read service data" });
+      res.status(400).json({ error: "Could not read skill data" });
+    }
+    if (!skill) {
+      res.status(404);
+    }
+    res.json(skill);
+  });
+});
+
+router.patch(skillsUrl + "/:id", function(req, res) {
+  Skill.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true } ).exec(function(err, updatedSkill) {
+    if (err) {
+      console.log(err);
+      res.status(400).json({ error: "Could not read skill data" });
+    }
+    if (!updatedSkill) {
+      res.status(404);
+    }
+    res.json(updatedSkill);
+  });
+});
+
+router.delete(skillsUrl + "/:id", function(req, res) {
+  Skill.findOneAndRemove({ _id: req.params.id }).exec(function(err, skill) {
+    if (err) {
+      console.log(err);
+      res.status(400).json({ error: "Could not read skill data" });
     }
     if (!service) {
       res.status(404);
     }
-    res.json(service);
-  });
-});
-
-router.patch(servicesUrl + "/:id", function(req, res) {
-  Service.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true } ).exec(function(err, updatedService) {
-    if (err) {
-      console.log(err);
-      res.status(400).json({ error: "Could not read service data" });
-    }
-    if (!updatedService) {
-      res.status(404);
-    }
-    res.json(updatedService);
-  });
-});
-
-router.delete(servicesUrl + "/:id", function(req, res) {
-  Service.findOneAndRemove({ _id: req.params.id }).exec(function(err, service) {
-    if (err) {
-      console.log(err);
-      res.status(400).json({ error: "Could not read service data" });
-    }
-    if (!service) {
-      res.status(404);
-    }
-    res.json({message: 'service deleted'});
+    res.json({message: 'skill deleted'});
   });
 });
 
