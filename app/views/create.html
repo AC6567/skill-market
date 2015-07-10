@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="medium-offset-3 medium-6 columns form-box">
+    <form ng-submit="submit()">
+      <h3 class="text-center">Donation Service Form</h3>
+      <div class="row">
+        <div class="medium-12 columns">
+          <label>
+            <input type="text" placeholder="Name" ng-model="service.name" required/>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>
+            <input type="text" placeholder="Charity Organization" ng-model="service.cause" required/>
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>
+            <select ng-model="service.serviceType" required>
+              <option value="" disabled selected>Organization Type</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Poverty">Poverty</option>
+              <option value="Erectile Dysfunction">Erectile Dysfunction</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>
+            <input type="text" placeholder="Service" ng-model="service.title" required/>
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>
+            <select ng-model="service.amount" required>
+              <option class="dulled" value="" disabled selected>Amount</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="200">200</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-12 columns">
+          <label>
+            <textarea class="medium-12" col="120" rows="10" placeholder="Describe why you wish to donate to this organization..." ng-model="service.description" required></textarea>
+          </label>
+        </div>
+      </div>
+      <button class="button expand round">Submit</button>
+    </form>
+  </div> 
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <form ng-submit="loginUser()">
+    <div class="medium-6 medium-offset-3 form-box">
+      <div class="row">
+        <h3 class="text-center">Login</h3>
+      </div>
+      <div class="row">
+        <div class="medium-12 columns">
+          <label>
+            <input type="text" placeholder="Email" ng-model="user.email" required/>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-12 columns">
+          <label>
+            <input type="password" placeholder="Password" ng-model="user.password" required/>
+          </label>
+        </div>
+      </div>
+      <button class="button expand round">Login</button>
+      <h5 class="text-center">Log in With</h5>
+      <div class="row">
+        <div class="medium-10 medium-centered columns">
+          <ul class="button-group even-3 round">
+            <li><a href="#" class="button social-login-button">Facebook</a></li>
+            <li><a href="#" class="button social-login-button">Twitter</a></li>
+            <li><a href="#" class="button social-login-button">Google+</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>  
+</div>

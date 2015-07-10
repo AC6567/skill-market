@@ -1,0 +1,20 @@
+{
+  "name": "project-make-or-break",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ryanosaur/project-make-or-break",
+  "authors": [
+    "Ben Halverson <benhalverson33@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2"
+  }
+}
