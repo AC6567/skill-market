@@ -15,11 +15,11 @@ var Skill = mongoose.model("Skill", {
   createdAt: { type: Date, default: Date.now }
 });
 
-Skill.on('index', function(err) {
-  if (err) {
-    console.error(err);
-  }
-});
+// Skill.on('index', function(err) {
+//   if (err) {
+//     console.error(err);
+//   }
+// });
 
 // var data = [{ serviceType: 'web development', cause: 'breast cancer', amount: '200', description: 'this is where the description will go!' }];
 

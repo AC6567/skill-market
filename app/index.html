@@ -1,26 +1,21 @@
-<html ng-app="mob">
+<html>
   <head>
     <title>Skill Feed</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-    <div class="container sticky">
-      <nav class="top-bar" data-options="sticky_on: large" role="navigation" ng-controller="NavCtrl">
-        <ul class="title-area">
-          <li class="name">
-            <h1><a ui-sref="list">SkillFeed</a></h1>
-          </li>
+    <div class="container">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+          <h2>Skill Feed</h2>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Post</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Logout</a></li>
         </ul>
-        <section class="top-bar-section">
-          <ul class="right">
-            <li><a ui-sref="create">Post</a></li>
-            <li><a ui-sref="login">Login</a></li>
-            <li><a ui-sref="adduser">Sign Up</a></li>
-          </ul>
-        </section>
       </nav>
-
       <div ui-view></div>
     </div>
 
